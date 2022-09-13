@@ -65,7 +65,7 @@ Then, I test the data with different values of **n**:
 
 ![My Image](images/10.png)
 
-<h4>n = 1150</h4>
+<h4>n = 1250</h4>
 
 ![My Image](images/11.png)
 
