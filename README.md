@@ -1,5 +1,5 @@
-# Parzen_Window_Models
-Implementation of a Parzen Window model with different window sizes, and a **gaussian kernel** on the **Ted Talks** dataset, both **from scratch**, and by using **scikit learn**.
+# Parzen_Window_KNN_Models
+Implementation of a Parzen Window model with different window sizes, and a **gaussian kernel** on the **Ted Talks** dataset, both **from scratch**, and by using **scikit learn**, and investigation of the **curse of dimensionality** on a dataset of random points in the x-y plane, and comparing the results to **KNN** and **Parzen Window** methods.
 
 <h2>Parzen Window From Scratch:</h2>
 
@@ -89,3 +89,49 @@ Comparing the results of the first and second part:
 As it can be seen in both implementations, by increasing the size of the window, our model becomes smoother, which is expexted according to what we have learned in the class.
 
 Also it can be seen that by increasing the size of our train data, the model becomes **more similar** to the actual model and also **smoother**, since more data is used for the model to learn.
+
+<h2>Curse of dimensionality:</h2>
+
+<h3>Part A:</h3>
+
+Implementation of 1000 random n dimensional data points, and finding the distance between each pair of them. Distance calculation is done by using cdist as below:
+
+```ruby
+distance = cdist(numbers, numbers, metric = 'euclidean')
+```
+
+The **histogram** of the distances is shown below:
+
+<h4>n = 1000 , d = 5</h4>
+
+![My Image](images/20.png)
+
+<h4>n = 1000 , d = 2000</h4>
+
+![My Image](images/21.png)
+
+<h4>n = 1000 , d = 5000</h4>
+
+![My Image](images/22.png)
+
+<h4>n = 1000 , d = 10000</h4>
+
+![My Image](images/23.png)
+
+Now I fix the dimension to 10000, and check different values for the **length of the vector**:
+
+<h4>n = 2000 , d = 10000</h4>
+
+![My Image](images/24.png)
+
+<h4>n = 5000 , d = 10000</h4>
+
+![My Image](images/25.png)
+
+<h3>Part B:</h3>
+
+<h4>Comparing the results to KNN algorithm:</h4>
+
+In **KNN** method, we fix the size of k, and increase the size window until we have k samples inside it. As it can be seen in the above implementations, by increasing the number of samples in large dimensions, the computations become very **complex** and take a **long time**. So, in these kinds of datasets, it's better to **fix the number of samples** and **increase the size of the window**, because the computations are going to be a lot **faster**.
+
+The relation between this project and the curse of dimensionality, is the **huge amount of computations** that occur when **increasing the dimensions** in the problem. In fact, the number of the samples need to be increased so that the **density** of data stays the same.
