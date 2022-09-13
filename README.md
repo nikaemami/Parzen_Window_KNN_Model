@@ -57,6 +57,13 @@ bandwidths = [10, 20, 50, 100]
 
 Then, I test the data with different values of **n**:
 
+```ruby
+for n in range(250,len(duration_list),250):
+    x_train_new = x_train[0:n]
+    kde_model = KernelDensity(kernel='gaussian', bandwidth=10)
+    kde_model.fit(x_train_new)
+```
+
 <h4>n = 250</h4>
 
 ![My Image](images/9.png)
